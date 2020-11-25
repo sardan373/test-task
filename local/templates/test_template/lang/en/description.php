@@ -1,0 +1,4 @@
+<?
+$MESS["TEST_TEMPLATE_DESCRIPTION_NAME"] = "Template for test task";
+$MESS["TEST_TEMPLATE_DESCRIPTION_DESC"] = "";
+?>

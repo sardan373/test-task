@@ -1,0 +1,1 @@
+<a class="info__sell d-flex align-items-center" href="" target="_blank">Идут продажи<img class="info__sell-ico" src="/img/ico-7.svg" alt=""></a>
