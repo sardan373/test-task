@@ -37,6 +37,15 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                             <span class="error-fld" title="<?=htmlspecialcharsbx($arResult["FORM_ERRORS"][$FIELD_SID])?>"></span>
                         <?endif;?>
                         <label>
+                            <?
+                            if (!empty($arParams['ELEMENT_NAME']) && !empty($arParams['FILED_ID']) && $arQuestion['STRUCTURE'][0]['ID'] == $arParams['FILED_ID']) {
+                                $arQuestion["HTML_CODE"] = str_replace(
+                                    '</textarea>',
+                                    $arParams['ELEMENT_NAME'] . '</textarea>',
+                                    $arQuestion["HTML_CODE"]
+                                );
+                            }
+                            ?>
                             <?=str_replace(
                                 "<textarea ",
                                 "<textarea class='form-control' placeholder='{$arQuestion["CAPTION"]}' ",
@@ -57,9 +66,24 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                             <span class="error-fld" title="<?=htmlspecialcharsbx($arResult["FORM_ERRORS"][$FIELD_SID])?>"></span>
                         <?endif;?>
                         <label>
+                            <?
+                            if (!empty($arParams['ELEMENT_NAME']) && !empty($arParams['FILED_ID']) && $arQuestion['STRUCTURE'][0]['ID'] == $arParams['FILED_ID']) {
+                                $value = " value='{$arParams['ELEMENT_NAME']}'";
+                            } else {
+                                $value = '';
+                            }
+                            ?>
                             <?=str_replace(
-                                "<input ",
-                                "<input class='form-control' placeholder='{$arQuestion["CAPTION"]}' ",
+                                [
+                                    " value ",
+                                    "value=",
+                                    "<input "
+                                ],
+                                [
+                                    "",
+                                    "old-value=",
+                                    "<input class='form-control' placeholder='{$arQuestion["CAPTION"]}'{$value} "
+                                ],
                                 $arQuestion["HTML_CODE"]
                             )?>
                         </label>
